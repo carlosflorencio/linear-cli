@@ -1,4 +1,4 @@
-module github.com/carlosflorencio/linear-cli-go
+module github.com/carlosflorencio/linear-cli
 
 go 1.20
 
