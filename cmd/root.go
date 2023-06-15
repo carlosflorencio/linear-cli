@@ -4,20 +4,17 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/carlosflorencio/linear-cli/config"
 	"github.com/spf13/cobra"
-)
-
-const (
-	apiKeyEnvVar = "LINEAR_API_KEY"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "linear",
 	Short: "A CLI tool to interact with the Linear API",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
-		value := os.Getenv(apiKeyEnvVar)
+		value := config.ApiKey()
 		if value == "" {
-			fmt.Printf("Error: Required environment variable %s is not set.\n", apiKeyEnvVar)
+			fmt.Printf("Error: Required environment variable %s is not set.\n", config.ApiKeyEnvVar)
 			os.Exit(1)
 		}
 	},
@@ -36,4 +33,5 @@ func Execute() {
 
 func init() {
 	rootCmd.PersistentFlags().StringVarP(&TeamID, "team", "t", "", "Team ID")
+	// rootCmd.MarkFlagRequired("team")
 }
