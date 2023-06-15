@@ -21,8 +21,8 @@ vendor/
 # Go workspace file
 go.work
 
-linear-cli-go
-linear
+# Built binaries
+bin/
 
 ### macOS ###
 # General

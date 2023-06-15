@@ -7,21 +7,22 @@ GOGET = $(GOCMD) get
 
 # Name of your Go CLI app
 APP_NAME = linear
+OUTPUT_DIR = bin
 
 all: build
 
 build:
-	$(GOBUILD) -o $(APP_NAME)
+	$(GOBUILD) -o $(OUTPUT_DIR)/$(APP_NAME)
 
 clean:
 	$(GOCLEAN)
-	rm -f $(APP_NAME)
+	rm -f $(OUTPUT_DIR)/$(APP_NAME)
 
 test:
 	$(GOTEST) -v ./...
 
 run:
-	$(GOBUILD) -o $(APP_NAME)
-	./$(APP_NAME)
+	$(GOBUILD) -o $(OUTPUT_DIR)/$(APP_NAME)
+	./$(OUTPUT_DIR)/$(APP_NAME)
 
 .PHONY: all build clean test run
